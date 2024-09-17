@@ -710,4 +710,60 @@ ls -m //Mostra os arquivos separados por virgula
 		46 directories, 12 files
 
 
- 
+ 	# comando para remover aplicaçoes e pacotes
+
+ 		sudo apt-get purge remove as aplicaçãoe e pacotes
+
+ 			flavio@flavio-Notebook-PC:~$ sudo apt-get purge tree
+			[sudo] senha para flavio: 
+			Lendo listas de pacotes... Pronto
+			Construindo árvore de dependências... Pronto
+			Lendo informação de estado... Pronto        
+			Os pacotes a seguir serão REMOVIDOS:
+			  tree*
+			0 pacotes atualizados, 0 pacotes novos instalados, 1 a serem removidos e 8 não atualizados.
+			Depois desta operação, 111 kB de espaço em disco serão liberados.
+			Você quer continuar? [S/n]  
+			(Lendo banco de dados ... 156279 ficheiros e diretórios atualmente instalados.)
+			A remover tree (2.1.1-2ubuntu3) ...
+			A processar 'triggers' para man-db (2.12.0-4build2) ...
+			flavio@flavio-Notebook-PC:~$ tree
+			Comando 'tree' não encontrado, mas poder ser instalado com:
+			sudo snap install tree  # version 1.8.0+pkg-3fd6, or
+			sudo apt  install tree  # version 2.1.1-2
+			Veja 'snap info tree' para versões adicionais.
+
+	# comando para atualizar versão do linux
+
+		sudo apt-get dist-upgrade atualiza a versão do linux (Cuidado)
+
+	# comando para limpeza de pacotes e arquivos de aplicativos que não sao mais necessarios
+
+		sudo apt-get autoremove limpa aquivos e pacote inutilizados não necessarios
+
+		flavio@flavio-Notebook-PC:~$ sudo apt-get autoremove
+		Lendo listas de pacotes... Pronto
+		Construindo árvore de dependências... Pronto
+		Lendo informação de estado... Pronto        
+		0 pacotes atualizados, 0 pacotes novos instalados, 0 a serem removidos e 8 não atualizados.
+		flavio@flavio-Notebook-PC:~$
+
+	# comando para buscar aplicativos e pacotes
+
+		apt-cache search <app> busca pacotes e aplicativos
+
+		flavio@flavio-Notebook-PC:~$ apt-cache search htop
+		htop - visualizador de processos interativo
+		aha - ANSI color to HTML converter
+		bashtop - Resource monitor that shows usage and stats
+		bpytop - Resource monitor that shows usage and stats
+		btm - customizable graphical process/system monitor for the terminal
+		btop - Modern and colorful command line resource monitor that shows usage and stats
+		libauthen-oath-perl - Perl module for OATH One Time Passwords
+		pftools - build and search protein and DNA generalized profiles
+
+
+	# Comando apt-get resumido
+
+		sudo apt nas versoes mais atuais ja é suficiente para instalacao de pacoes e aplicativos, todos os comandos com apt-get
+
