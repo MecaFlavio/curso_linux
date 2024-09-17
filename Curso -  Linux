@@ -1,0 +1,713 @@
+#aula 1 - Teoria sobre Linux
+
+## Importante:
+<comando> --help mostra informaçoes sobre o comando digitado
+
+## O que são distribuições ou Distro.
+
+São versoes do linux diferentes e suas configurações.
+
+## O que é o kernel do Linux
+
+É o coração do sistema, um software programado em c e assembly. faz a comunicação com o hardware do computador.
+Gerencia CPU do, memoria e etc.
+Faz a ligação Usuário/Hardware.
+Kernel é a mais importante para o sistema Linux.
+
+## Por que utilizar Linux?
+
+- Free;
+- Utilizado na maioria dos servidores web;
+- Grandes empresas utilizam (AWS, Heroku);
+- Requisito para muitas vagas (pelo menos ter noçao de usuário);
+- Comunidade muita ativa;
+- Segurança
+- Suporte nativo para a maioria das liguagens;
+
+# Aula 2 - Linux Fundamental - Comandos básicos, Noções do SO, Familiaridade com  o termianal
+
+## Conhecendo o terminal e o shell
+
+ - Abrir o terminal
+ 	1ª abrir pela a barra de tarefas no icone do terminal
+ 	2ª abrir com o comando ## ctrl+ alt+ T ##
+
+Terminal é uma tela que roda o shell, o shell execulta o comando digitado.
+o terminal envia um comando para o shell e o shell retorna uma resposta.
+
+## Sintaxe de comandos no terminal
+	- Quando há opções:
+		COMANDO -OPÇÕES ARQUIVOS/DIRETORIOS
+	- Quando não ha opções
+		COMANDO ARQUIVOS/DIRETORIOS
+
+# Estruturas de diretórios do Linux
+
+bin - pasta que contem aquivos binarios, aquivos necessarios para executar determinadas açoes, o shell é executado dentro do bin.
+
+boot - aquivos que auxilian na inicialização do sistema
+
+dev - aquivos que representam todos os disositvos de entrada e saida do sistema
+
+etc - arquivos de configurações, podemos alterar configurações de softwares em determinados aquivos que estão dentro desta pasta.
+
+home -  arquivos pessoais dos usuarios da maquina
+
+lib - contem aquivos de bibliotecas que são compartilhadas com outros aplicativos
+
+media - apresenta as pastas dos dispositivos que são montados na maquina
+
+opt - tem arquivos de aplicaçoes de terceiros, que não são originais do sistema
+
+sbin - parecido com bin, possui arquivos binarios de inicialização do sistema
+
+tmp - colocar aquivos descartaveis
+
+usr - contem aquivos utilizados apenas no modo leitura
+
+var - possiu arquivos de logs erro e acesso
+
+
+# Comando cd: básico
+
+Cd - (change directory) - 
+	
+	cd <nome_diretorio> //abre o diretorio 
+
+	cd /var/log/ //abre o diretorio log apartir do diretori raiz '/' 
+
+	cd .. //volta um nivel de diretorio
+	cd ../../ //Volta dois niveis e assim por diante
+
+	cd - //volta para o diretorio anterior que estava aberto
+
+	cd ~ //volta paraa home do usuario
+
+	//é possivel vontar diretorios e acessar pastas, concatenando comandos, no exemplo voltando da pasta home para / e indo pra o var
+	flavio@flavio-Notebook-PC:~$ cd ../../var
+	flavio@flavio-Notebook-PC:/var$
+
+	cd + TAB // mostra pasta do diretório também completa o nome do diretorio
+
+	// Concatenando comandos
+
+	flavio@flavio-Notebook-PC:/$ cd ~ && ls // execulta o comando 'cd' E o comando 'ls'
+	'Área de trabalho'   Downloads   Modelos   Público   Vídeos
+ 	Documentos          Imagens     Músicas   snap
+	flavio@flavio-Notebook-PC:~$
+
+
+# Comando ls: serve para visualizar aquivos e pastas dentro de diretorios
+
+	// podemos passar parametros para o ls
+
+	ls -l //mostra os detalher dos aquivos no diretorio - PERMISSÃO/USUÁRIO/GRUPO/TAMANHO/DATA DE CRIAÇÃO/NOME
+	
+	flavio@flavio-Notebook-PC:~$ ls -l
+	total 36
+	drwxr-xr-x 2 flavio flavio 4096 set 15 17:17 'Área de trabalho'
+	drwxr-xr-x 4 flavio flavio 4096 set 15 17:17  Documentos
+	drwxr-xr-x 2 flavio flavio 4096 set 15 15:35  Downloads
+	drwxr-xr-x 2 flavio flavio 4096 set 15 15:35  Imagens
+	drwxr-xr-x 2 flavio flavio 4096 set 15 15:35  Modelos
+	drwxr-xr-x 2 flavio flavio 4096 set 15 15:35  Músicas
+	drwxr-xr-x 2 flavio flavio 4096 set 15 15:35  Público
+	drwx------ 7 flavio flavio 4096 set 15 18:00  snap
+	drwxr-xr-x 2 flavio flavio 4096 set 15 15:35  Vídeos
+	flavio@flavio-Notebook-PC:~$ 
+
+	ls -a // mostra também os aquivos ocultos
+
+	flavio@flavio-Notebook-PC:~$ ls -a
+	 .                   .bashrc      Imagens    Público
+	 ..                  .cache       .local     snap
+	'Área de trabalho'   .config      Modelos    .ssh
+	 .bash_history       Documentos   Músicas    .sudo_as_admin_successful
+	 .bash_logout        Downloads    .profile   Vídeos
+	flavio@flavio-Notebook-PC:~$ 
+
+	ls -la // combina os dois parametros e mostra os detalhes também dos aquivos ocultos
+
+	ls -lh // mostra detalhes human readble
+	
+	flavio@flavio-Notebook-PC:~$ ls -lh
+	total 36K
+	drwxr-xr-x 2 flavio flavio 4,0K set 15 17:17 'Área de trabalho's
+	drwxr-xr-x 4 flavio flavio 4,0K set 15 17:17  Documentos
+	drwxr-xr-x 2 flavio flavio 4,0K set 15 15:35  Downloads
+	drwxr-xr-x 2 flavio flavio 4,0K set 15 15:35  Imagens
+	drwxr-xr-x 2 flavio flavio 4,0K set 15 15:35  Modelos
+	drwxr-xr-x 2 flavio flavio 4,0K set 15 15:35  Músicas
+	drwxr-xr-x 2 flavio flavio 4,0K set 15 15:35  Público
+	drwx------ 7 flavio flavio 4,0K set 15 18:00  snap
+	drwxr-xr-x 2 flavio flavio 4,0K set 15 15:35  Vídeos
+	flavio@flavio-Notebook-PC:~$ 
+
+	ls -ltr // mostra a ultima data de atualização do arquivos
+	
+	lavio@flavio-Notebook-PC:~$ ls -ltr
+	total 36
+	drwxr-xr-x 2 flavio flavio 4096 set 15 15:35  Vídeos
+	drwxr-xr-x 2 flavio flavio 4096 set 15 15:35  Público
+	drwxr-xr-x 2 flavio flavio 4096 set 15 15:35  Músicas
+	drwxr-xr-x 2 flavio flavio 4096 set 15 15:35  Modelos
+	drwxr-xr-x 2 flavio flavio 4096 set 15 15:35  Imagens
+	drwxr-xr-x 2 flavio flavio 4096 set 15 15:35  Downloads
+	drwxr-xr-x 4 flavio flavio 4096 set 15 17:17  Documentos
+	drwxr-xr-x 2 flavio flavio 4096 set 15 17:17 'Área de trabalho'
+	drwx------ 7 flavio flavio 4096 set 15 18:00  snap
+	flavio@flavio-Notebook-PC:~$
+
+	ls -l / // listaq arquivos de um diretório em especifico apontando o caminho, no caso o /
+	
+	flavio@flavio-Notebook-PC:~$ ls -l /
+	total 4194396
+	lrwxrwxrwx   1 root root          7 abr 22 10:08 bin -> usr/bin
+	drwxr-xr-x   2 root root       4096 fev 26  2024 bin.usr-is-merged
+	drwxr-xr-x   3 root root       4096 set 15 15:28 boot
+	drwxr-xr-x   2 root root       4096 dez 31  1969 cdrom
+	drwxr-xr-x  20 root root       4420 set 15 16:17 dev
+	drwxr-xr-x 138 root root      12288 set 15 15:34 etc
+	drwxr-xr-x   3 root root       4096 set 15 15:33 home
+	lrwxrwxrwx   1 root root          7 abr 22 10:08 lib -> usr/lib
+	lrwxrwxrwx   1 root root          9 abr 22 10:08 lib64 -> usr/lib64
+	drwxr-xr-x   2 root root       4096 abr  8 11:37 lib.usr-is-merged
+	drwx------   2 root root      16384 set 15 15:21 lost+found
+	drwxr-xr-x   2 root root       4096 abr 24 07:47 media
+	drwxr-xr-x   2 root root       4096 abr 24 07:47 mnt
+	drwxr-xr-x   2 root root       4096 abr 24 07:47 opt
+	dr-xr-xr-x 270 root root          0 set 15 16:03 proc
+	drwx------   5 root root       4096 set 15 18:28 root
+	drwxr-xr-x  36 root root        880 set 15 16:15 run
+	lrwxrwxrwx   1 root root          8 abr 22 10:08 sbin -> usr/sbin
+	drwxr-xr-x   2 root root       4096 mar 31 06:00 sbin.usr-is-merged
+	drwxr-xr-x  18 root root       4096 set 15 16:17 snap
+	drwxr-xr-x   2 root root       4096 abr 24 07:47 srv
+	-rw-------   1 root root 4294967296 set 15 15:28 swap.img
+	dr-xr-xr-x  13 root root          0 set 15 16:03 sys
+	drwxrwxrwt  18 root root       4096 set 15 18:31 tmp
+	drwxr-xr-x  12 root root       4096 abr 24 07:47 usr
+	drwxr-xr-x  14 root root       4096 set 15 15:32 var
+	flavio@flavio-Notebook-PC:~$ 
+
+ls -lr //Lista os arquivos do diretorio em ordem reversa, no caso os arquivos o diretório /
+
+	flavio@flavio-Notebook-PC:~$ ls -lr /
+	total 4194396
+	drwxr-xr-x  14 root root       4096 set 15 15:32 var
+	drwxr-xr-x  12 root root       4096 abr 24 07:47 usr
+	drwxrwxrwt  17 root root       4096 set 16 10:42 tmp
+	dr-xr-xr-x  13 root root          0 set 16 10:36 sys
+	-rw-------   1 root root 4294967296 set 15 15:28 swap.img
+	drwxr-xr-x   2 root root       4096 abr 24 07:47 srv
+	drwxr-xr-x  18 root root       4096 set 15 16:17 snap
+	drwxr-xr-x   2 root root       4096 mar 31 06:00 sbin.usr-is-merged
+	lrwxrwxrwx   1 root root          8 abr 22 10:08 sbin -> usr/sbin
+	drwxr-xr-x  35 root root        860 set 16 10:36 run
+	drwx------   5 root root       4096 set 15 18:28 root
+	dr-xr-xr-x 252 root root          0 set 16 10:36 proc
+	drwxr-xr-x   2 root root       4096 abr 24 07:47 opt
+	drwxr-xr-x   2 root root       4096 abr 24 07:47 mnt
+	drwxr-xr-x   2 root root       4096 abr 24 07:47 media
+	drwx------   2 root root      16384 set 15 15:21 lost+found
+	drwxr-xr-x   2 root root       4096 abr  8 11:37 lib.usr-is-merged
+	lrwxrwxrwx   1 root root          9 abr 22 10:08 lib64 -> usr/lib64
+	lrwxrwxrwx   1 root root          7 abr 22 10:08 lib -> usr/lib
+	drwxr-xr-x   3 root root       4096 set 15 15:33 home
+	drwxr-xr-x 138 root root      12288 set 15 15:34 etc
+	drwxr-xr-x  20 root root       4440 set 16 10:36 dev
+	drwxr-xr-x   2 root root       4096 dez 31  1969 cdrom
+	drwxr-xr-x   3 root root       4096 set 15 15:28 boot
+	drwxr-xr-x   2 root root       4096 fev 26  2024 bin.usr-is-merged
+	lrwxrwxrwx   1 root root          7 abr 22 10:08 bin -> usr/bin
+	flavio@flavio-Notebook-PC:~$
+
+ls -R //Lista mostra os subdiretórios das pastas
+
+ls -lS //Mostra os arquivos em ordem de tamanho
+
+ls -m //Mostra os arquivos separados por virgula
+
+
+# Comando clear
+
+	clear // Limpa o terminal
+
+
+# Comando cat
+
+	cat exibe o conteudo de arquivos
+
+		flavio@flavio-Notebook-PC:~$ cat teste
+		Este é o curso de Linux para devs, feito pelo hora de codar
+
+	cat teste teste2 // é possivel mostrar o conteudo de arquivos simultaneos
+
+		flavio@flavio-Notebook-PC:~$ cat teste teste2
+		Este é o curso de Linux para devs, feito pelo hora de codar
+		este é o segundo arquivo
+
+
+	cat teste teste2 > teste3 // é possivel criar um arquivo juntando o conteudo de outros arquivos
+
+		flavio@flavio-Notebook-PC:~$ cat teste teste2 > teste3
+		
+		flavio@flavio-Notebook-PC:~$ ls
+		'Área de trabalho'   Downloads   Modelos   Público   teste    teste3
+		 Documentos          Imagens     Músicas   snap      teste2   Vídeos
+		
+		flavio@flavio-Notebook-PC:~$ cat teste3
+		Este é o curso de Linux para devs, feito pelo hora de codar
+		este é o segundo arquivo
+
+	cat teste -n teste3 // Mostra numero de linhas no conteudi
+
+		flavio@flavio-Notebook-PC:~$ cat -n teste3
+	     1	Este é o curso de Linux para devs, 
+	     2	
+	     3	feito pelo hora de codar
+	     4	este é o segundo arquivo
+		flavio@flavio-Notebook-PC:~$
+
+	cat -e teste3 // Delimita  com o $ o final de cada linha no arquivo
+
+		flavio@flavio-Notebook-PC:~$ cat -e teste3
+		Este M-CM-) o curso de Linux para devs, $
+		$
+		feito pelo hora de codar$
+		este M-CM-) o segundo arquivo$
+		flavio@flavio-Notebook-PC:~$
+
+	cat teste4 >> teste3 // adiciona o conteudo de teste4 ao final de teste 3 sem alterar nenhum conteudo existente
+
+		flavio@flavio-Notebook-PC:~$ cat teste4 >> teste3
+		flavio@flavio-Notebook-PC:~$ cat teste3
+		Este é o curso de Linux para devs, 
+
+		feito pelo hora de codar
+		este é o segundo arquivo
+		este agora é o teste4
+
+
+# Comando touch
+
+	touch <nome_do_aquivo> // cria um novo arquivo, também altera a data de alteração de um aquivo
+
+		// crando arquivo, é possivel criar varios arquivos com um comando apenas ex: touch a.txt b.txt c.txt
+		flavio@flavio-Notebook-PC:~$ ls
+		'Área de trabalho'   Downloads   Modelos   Público   teste    teste3   Vídeos
+		 Documentos          Imagens     Músicas   snap      teste2   teste4
+		
+		flavio@flavio-Notebook-PC:~$ touch teste5
+		
+		flavio@flavio-Notebook-PC:~$ ls
+		'Área de trabalho'   Downloads   Modelos   Público   teste    teste3   teste5
+		 Documentos          Imagens     Músicas   snap      teste2   teste4   Vídeos
+		flavio@flavio-Notebook-PC:~$
+
+		// atualizando data de alteração do arquivo
+		##flavio@flavio-Notebook-PC:~$ ls -ltr
+		total 52
+		drwxr-xr-x 2 flavio flavio 4096 set 15 15:35  Vídeos
+		drwxr-xr-x 2 flavio flavio 4096 set 15 15:35  Público
+		drwxr-xr-x 2 flavio flavio 4096 set 15 15:35  Músicas
+		drwxr-xr-x 2 flavio flavio 4096 set 15 15:35  Modelos
+		drwxr-xr-x 2 flavio flavio 4096 set 15 15:35  Imagens
+		drwxr-xr-x 4 flavio flavio 4096 set 15 17:17  Documentos
+		drwxr-xr-x 2 flavio flavio 4096 set 15 17:17 'Área de trabalho'
+		drwx------ 7 flavio flavio 4096 set 15 18:00  snap
+		drwxr-xr-x 2 flavio flavio 4096 set 16 10:39  Downloads
+		##-rw-rw-r-- 1 flavio flavio   61 set 16 11:10  teste
+		-rw-rw-r-- 1 flavio flavio   25 set 16 11:13  teste2
+		-rw-rw-r-- 1 flavio flavio   22 set 16 11:31  teste4
+		-rw-rw-r-- 1 flavio flavio  111 set 16 11:33  teste3
+		
+		##flavio@flavio-Notebook-PC:~$ touch  teste
+		
+		##flavio@flavio-Notebook-PC:~$ ls -ltr
+		total 52
+		drwxr-xr-x 2 flavio flavio 4096 set 15 15:35  Vídeos
+		drwxr-xr-x 2 flavio flavio 4096 set 15 15:35  Público
+		drwxr-xr-x 2 flavio flavio 4096 set 15 15:35  Músicas
+		drwxr-xr-x 2 flavio flavio 4096 set 15 15:35  Modelos
+		drwxr-xr-x 2 flavio flavio 4096 set 15 15:35  Imagens
+		drwxr-xr-x 4 flavio flavio 4096 set 15 17:17  Documentos
+		drwxr-xr-x 2 flavio flavio 4096 set 15 17:17 'Área de trabalho'
+		drwx------ 7 flavio flavio 4096 set 15 18:00  snap
+		drwxr-xr-x 2 flavio flavio 4096 set 16 10:39  Downloads
+		-rw-rw-r-- 1 flavio flavio   25 set 16 11:13  teste2
+		-rw-rw-r-- 1 flavio flavio   22 set 16 11:31  teste4
+		-rw-rw-r-- 1 flavio flavio  111 set 16 11:33  teste3
+		##-rw-rw-r-- 1 flavio flavio   61 set 16 11:37  teste
+		flavio@flavio-Notebook-PC:~$ 
+
+
+# Comando man
+
+	man mostra o manual completo e detalhado do comando e seus parametros ex: man ls
+
+
+# ctrl+r ajuda a encontrar comando filtrando parte do nome do comando
+
+
+# Gerenciar aquivos em diretórios
+
+# comando mkdir
+	//cria diretorios
+	flavio@flavio-Notebook-PC:~$ mkdir dir1
+	
+	flavio@flavio-Notebook-PC:~$ ls
+	'Área de trabalho'   Downloads   Músicas   teste    teste4
+	 dir1                Imagens     Público   teste2   teste5
+	 Documentos          Modelos     snap      teste3   Vídeos
+	
+	//é possivel criar vairos diretorios com apenas um comanando
+	flavio@flavio-Notebook-PC:~$ mkdir dir2 dir3 dir4
+	
+	flavio@flavio-Notebook-PC:~$ ls
+	'Área de trabalho'   dir3         Downloads   Músicas   teste    teste4
+	 dir1                dir4         Imagens     Público   teste2   teste5
+	 dir2                Documentos   Modelos     snap      teste3   Vídeos
+	
+	//É possivel realizar a criação de varios diretorios em cadeia
+	flavio@flavio-Notebook-PC:~$ mkdir -p dir4/dir1/dir5
+	flavio@flavio-Notebook-PC:~$ ls dir4
+	dir1
+	flavio@flavio-Notebook-PC:~$ ls dir4/dir1
+	dir5
+	flavio@flavio-Notebook-PC:~$ 
+
+	//é possivel deixa mais explicito todo o processo no terminal
+	flavio@flavio-Notebook-PC:~$ mkdir -v dir5 dir6
+	mkdir: foi criado o diretório 'dir5'
+	mkdir: foi criado o diretório 'dir6'
+
+	//é possilvel criar um diretório dentro de outro diretório
+	flavio@flavio-Notebook-PC:~$ mkdir dir6/dir1
+
+	//para criar estruturas de diretórios mais complexas usamo o mkdir -p
+	flavio@flavio-Notebook-PC:~$ mkdir dir6/dir1/dir7/dir5
+	mkdir: não foi possível criar o diretório “dir6/dir1/dir7/dir5”: Arquivo ou diretório inexistente
+	
+	flavio@flavio-Notebook-PC:~$ mkdir -p dir6/dir1/dir7/dir5
+
+	//também é possivel criar diretorios em pastas de nivel acima
+	mkdir ../dir10 vai criar o diretório na pasta anterio a que esta localizado
+
+
+# Removendo Arquivos ou diretorios
+
+	rm // remove arquivos e diretorios,é possivel remover varios arquivos com apenas um comando
+	rm -i //realiza remoção com uma pergunta y ou n
+
+		flavio@flavio-Notebook-PC:~$ ls
+		'Área de trabalho'   dir3   dir6         Imagens   Público   teste2   teste5
+		 dir1                dir4   Documentos   Modelos   snap      teste3   Vídeos
+		 dir2                dir5   Downloads    Músicas   teste     teste4
+
+		flavio@flavio-Notebook-PC:~$ rm teste
+
+		flavio@flavio-Notebook-PC:~$ ls
+		'Área de trabalho'   dir3   dir6         Imagens   Público   teste3   Vídeos
+		 dir1                dir4   Documentos   Modelos   snap      teste4
+		 dir2                dir5   Downloads    Músicas   teste2    teste5
+		flavio@flavio-Notebook-PC:~$ 
+
+	rm -dv //remove diretórios vazios
+
+		flavio@flavio-Notebook-PC:~$ ls
+		'Área de trabalho'   dir3   dir6         Imagens   Público   teste3   Vídeos
+		 dir1                dir4   Documentos   Modelos   snap      teste4
+		 dir2                dir5   Downloads    Músicas   teste2    teste5
+		
+		flavio@flavio-Notebook-PC:~$ rm dir1
+		rm: não foi possível remover 'dir1': É um diretório
+		
+		flavio@flavio-Notebook-PC:~$ rm -dv dir1
+		foi removido o diretório: 'dir1'
+		
+		flavio@flavio-Notebook-PC:~$ ls
+		'Área de trabalho'   dir4   Documentos   Modelos   snap     teste4
+		 dir2                dir5   Downloads    Músicas   teste2   teste5
+		 dir3                dir6   Imagens      Público   teste3   Vídeos
+	
+	rm -rfv //Remove diretŕio com arquivos
+
+		flavio@flavio-Notebook-PC:~$ ls dir6
+		dir1
+		flavio@flavio-Notebook-PC:~$ rm  -rfv dir6
+		foi removido o diretório: 'dir6/dir1/dir7/dir5'
+		foi removido o diretório: 'dir6/dir1/dir7'
+		foi removido o diretório: 'dir6/dir1'
+		foi removido o diretório: 'dir6'
+		flavio@flavio-Notebook-PC:~$
+
+
+# comando rmdir remove apenas diretórios
+	
+	flavio@flavio-Notebook-PC:~$ ls
+	'Área de trabalho'   dir5         Imagens   Público   teste3   Vídeos
+	 dir3                Documentos   Modelos   snap      teste4
+	 dir4                Downloads    Músicas   teste2    teste5
+	
+	flavio@flavio-Notebook-PC:~$ rmdir dir3
+	
+	flavio@flavio-Notebook-PC:~$ ls
+	'Área de trabalho'   Documentos   Modelos   snap     teste4
+	 dir4                Downloads    Músicas   teste2   teste5
+	 dir5                Imagens      Público   teste3   Vídeos
+
+	rmdir -p //Remove diretórios em cadeia
+
+	flavio@flavio-Notebook-PC:~$ ls
+	'Área de trabalho'   Documentos   Modelos   snap     teste4
+	 dir4                Downloads    Músicas   teste2   teste5
+	 dir5                Imagens      Público   teste3   Vídeos
+
+	flavio@flavio-Notebook-PC:~$ rmdir -p dir4/dir1/dir5
+	
+	flavio@flavio-Notebook-PC:~$ ls dir4
+	ls: não foi possível acessar 'dir4': Arquivo ou diretório inexistente
+	
+	flavio@flavio-Notebook-PC:~$ ls
+	'Área de trabalho'   Documentos   Imagens   Músicas   snap     teste3   teste5
+	 dir5                Downloads    Modelos   Público   teste2   teste4   Vídeos
+
+
+# Comando cp
+	
+	cp copia diretorios e arquivos
+
+		flavio@flavio-Notebook-PC:~$ ls
+		'Área de trabalho'   Documentos   Imagens   Músicas          Público   Vídeos
+		 doc_original.txt    Downloads    Modelos   pasta_de_teste   snap
+		
+		flavio@flavio-Notebook-PC:~$ cp doc_original.txt doc_copia.txt
+		
+		flavio@flavio-Notebook-PC:~$ ls
+		'Área de trabalho'   Documentos   Modelos          Público
+		 doc_copia.txt       Downloads    Músicas          snap
+		 doc_original.txt    Imagens      pasta_de_teste   Vídeos
+		flavio@flavio-Notebook-PC:~$ 
+
+	//É possivel copiar arquivos para dentro de diretórios
+			
+		flavio@flavio-Notebook-PC:~$ cp doc_copia.txt pasta_de_teste
+		
+		flavio@flavio-Notebook-PC:~$ ls pasta_de_teste/
+		doc_copia.txt
+
+	//É possivel copiar varios arquivos para uma pasta com apenas um comando
+		
+		flavio@flavio-Notebook-PC:~$ ls
+		'Área de trabalho'   Documentos   Modelos          Público      teste2.txt
+		 doc_copia.txt       Downloads    Músicas          snap         Vídeos
+		 doc_original.txt    Imagens      pasta_de_teste   teste1.txt
+		
+		flavio@flavio-Notebook-PC:~$ ls pasta_de_teste/
+		doc_copia.txt
+		
+		flavio@flavio-Notebook-PC:~$ cp teste2.txt teste1.txt doc_original.txt pasta_de_teste/
+		
+		flavio@flavio-Notebook-PC:~$ ls pasta_de_teste/
+		doc_copia.txt  doc_original.txt  teste1.txt  teste2.txt
+		flavio@flavio-Notebook-PC:~$ 
+
+	//cp -r É possivel copiar diretorios para dentro de outros diretórios
+
+		flavio@flavio-Notebook-PC:~$ ls
+		'Área de trabalho'   doc_original.txt   Imagens   pasta_de_teste   teste1.txt
+		 dir_teste           Documentos         Modelos   Público          teste2.txt
+		 doc_copia.txt       Downloads          Músicas   snap             Vídeos
+		
+		flavio@flavio-Notebook-PC:~$ cp -r dir_teste pasta_de_teste
+		
+		flavio@flavio-Notebook-PC:~$ ls pasta_de_teste/
+		dir_teste  doc_copia.txt  doc_original.txt  teste1.txt  teste2.txt
+
+	//cp -r diretorio1/* diretorio2 copia tudo do diretorio1 para o diretorio2
+	//cp doc* vai copiar todos os arquivos que iniciam com a palavra doc  
+
+		flavio@flavio-Notebook-PC:~$ ls
+		'Área de trabalho'   Documentos   Imagens   Músicas          Público   Vídeos
+		 dir_teste           Downloads    Modelos   pasta_de_teste   snap
+		
+		flavio@flavio-Notebook-PC:~$ ls dir_teste/
+		teste1.txt
+		
+		flavio@flavio-Notebook-PC:~$ ls pasta_de_teste/
+		 dir_teste   doc_copia.txt   doc_original.txt  '~ls'   teste1.txt   teste2.txt
+		
+		flavio@flavio-Notebook-PC:~$ cp -r pasta_de_teste/* dir_teste/
+		
+		flavio@flavio-Notebook-PC:~$ ls dir_teste/
+		 dir_teste   doc_copia.txt   doc_original.txt  '~ls'   teste1.txt   teste2.txt
+		flavio@flavio-Notebook-PC:~$ 
+
+# Comando para mover arquivos e diretorios
+	
+	mv  move arquivos e diretórios
+	// É possivel mover todos os arquivos de um diretorio com * ex: mv * diretorio
+
+		flavio@flavio-Notebook-PC:~$ ls
+		'Área de trabalho'   Downloads   Músicas           snap
+		 dir_teste           Imagens     pasta_de_teste2   teste4.txt
+		 Documentos          Modelos     Público           Vídeos
+		
+		flavio@flavio-Notebook-PC:~$ mv teste4.txt pasta_de_teste2/
+		
+		flavio@flavio-Notebook-PC:~$ ls
+		'Área de trabalho'   Documentos   Imagens   Músicas           Público   Vídeos
+		 dir_teste           Downloads    Modelos   pasta_de_teste2   snap
+		
+		flavio@flavio-Notebook-PC:~$ ls pasta_de_teste2/
+		 dir_teste       doc_original.txt   teste1.txt   teste4.txt
+		 doc_copia.txt  '~ls'               teste2.txt
+
+	//É possivel mudar nomes de arquivos e diretorios
+		
+		flavio@flavio-Notebook-PC:~$ ls
+		'Área de trabalho'   Downloads   Músicas          snap
+		 dir_teste           Imagens     pasta_de_teste   teste1.txt
+		 Documentos          Modelos     Público          Vídeos
+		
+		flavio@flavio-Notebook-PC:~$ mv teste1.txt teste2.txt
+		
+		flavio@flavio-Notebook-PC:~$ ls
+		'Área de trabalho'   Downloads   Músicas          snap
+		 dir_teste           Imagens     pasta_de_teste   teste2.txt
+		 Documentos          Modelos     Público          Vídeos
+
+# Comando para mostrar o caminho da pasta onde estamos partindo da raiz
+
+	pwd
+		flavio@flavio-Notebook-PC:~/pasta_de_teste2/dir_teste$ pwd
+		/home/flavio/pasta_de_teste2/dir_teste
+
+
+# Gerenciando pacotes e aplicativos no LINUX
+
+	O comando apt-get realiza a atualização, instalação e exclusão de pacotes e aplcativos
+
+	o Comando sudo serve para ter permissões extras para fazer determindas manobras no sistema
+
+		//sudo apt-get update atualiza os repositórios dos pacotes instalados no sistema
+		
+		flavio@flavio-Notebook-PC:~/Documentos/meus_cursos$ sudo apt-get update
+		Atingido:1 http://security.ubuntu.com/ubuntu noble-security InRelease
+		Atingido:2 http://archive.ubuntu.com/ubuntu noble InRelease
+		Atingido:3 http://archive.ubuntu.com/ubuntu noble-updates InRelease
+		Atingido:4 http://archive.ubuntu.com/ubuntu noble-backports InRelease
+		Lendo listas de pacotes... Pronto
+
+
+	O comando sudo apt-get upgrade relaliza o upgrade dos pacotes instalados no sistema
+
+		//sudo apt-get upgrade
+			flavio@flavio-Notebook-PC:~$ sudo apt-get upgrade
+			[sudo] senha para flavio: 
+			Lendo listas de pacotes... Pronto
+			Construindo árvore de dependências... Pronto
+			Lendo informação de estado... Pronto        
+			Calculando atualização... Pronto
+			The following upgrades have been deferred due to phasing:
+			  python3-distupgrade ubuntu-pro-client ubuntu-pro-client-l10n ubuntu-release-upgrader-core ubuntu-release-upgrader-gtk
+			Os pacotes a seguir serão mantidos em suas versões atuais:
+			  linux-generic-hwe-24.04 linux-headers-generic-hwe-24.04 linux-image-generic-hwe-24.04
+			0 pacotes atualizados, 0 pacotes novos instalados, 0 a serem removidos e 8 não atualizados.
+			N: Some packages may have been kept back due to phasing.
+
+
+	# Comando para instalação de pacotes e aplicativos no linux
+
+		// Verifico se possuo a aplicação no sistema
+		flavio@flavio-Notebook-PC:~$ tree
+		Comando 'tree' não encontrado, mas poder ser instalado com:
+		sudo snap install tree  # version 1.8.0+pkg-3fd6, or
+		sudo apt  install tree  # version 2.1.1-2
+		Veja 'snap info tree' para versões adicionais.
+		
+		//Realizo a instalação do aplicatvo no sistema
+		flavio@flavio-Notebook-PC:~$ sudo apt-get install tree
+		Lendo listas de pacotes... Pronto
+		Construindo árvore de dependências... Pronto
+		Lendo informação de estado... Pronto        
+		Os NOVOS pacotes a seguir serão instalados:
+		  tree
+		0 pacotes atualizados, 1 pacotes novos instalados, 0 a serem removidos e 8 não atualizados.
+		É preciso baixar 47,1 kB de arquivos.
+		Depois desta operação, 111 kB adicionais de espaço em disco serão usados.
+		Obter:1 http://archive.ubuntu.com/ubuntu noble/universe amd64 tree amd64 2.1.1-2ubuntu3 [47,1 kB]
+		Baixados 47,1 kB em 1s (62,8 kB/s)
+		A seleccionar pacote anteriormente não seleccionado tree.
+		(Lendo banco de dados ... 149421 ficheiros e diretórios atualmente instalados.)
+		A preparar para desempacotar .../tree_2.1.1-2ubuntu3_amd64.deb ...
+		A descompactar tree (2.1.1-2ubuntu3) ...
+		Configurando tree (2.1.1-2ubuntu3) ...
+		A processar 'triggers' para man-db (2.12.0-4build2) ...
+		
+		//Executo o comando do aplicativo intalado
+		flavio@flavio-Notebook-PC:~$ tree
+		.
+		├── Área de trabalho
+		├── dir_teste
+		│   ├── dir_teste
+		│   │   └── teste1.txt
+		│   ├── doc_copia.txt
+		│   ├── doc_original.txt
+		│   ├── ~ls
+		│   ├── teste1.txt
+		│   └── teste2.txt
+		├── Documentos
+		│   ├── meus_cursos
+		│   │   └── Curso -  Linux
+		│   └── meus_projetos
+		├── Downloads
+		├── Imagens
+		├── Modelos
+		├── Músicas
+		├── pasta_de_teste2
+		│   ├── dir_teste
+		│   │   └── teste1.txt
+		│   ├── doc_copia.txt
+		│   ├── doc_original.txt
+		│   ├── ~ls
+		│   ├── teste1.txt
+		│   ├── teste2.txt
+		│   └── teste4.txt
+		├── Público
+		├── snap
+		│   ├── firefox
+		│   │   ├── 4173
+		│   │   ├── common
+		│   │   └── current -> 4173
+		│   ├── firmware-updater
+		│   │   ├── 127
+		│   │   ├── common
+		│   │   └── current -> 127
+		│   ├── snapd-desktop-integration
+		│   │   ├── 157
+		│   │   │   ├── Desktop
+		│   │   │   ├── Documents
+		│   │   │   ├── Downloads
+		│   │   │   ├── Music
+		│   │   │   ├── Pictures
+		│   │   │   ├── Public
+		│   │   │   ├── Templates
+		│   │   │   └── Videos
+		│   │   ├── common
+		│   │   └── current -> 157
+		│   ├── snap-store
+		│   │   ├── 1124
+		│   │   ├── common
+		│   │   └── current -> 1124
+		│   └── sublime-text
+		│       ├── 177
+		│       ├── common
+		│       └── current -> 177
+		└── Vídeos
+
+		46 directories, 12 files
+
+
+ 
