@@ -767,4 +767,226 @@ ls -m //Mostra os arquivos separados por virgula
 
 		sudo apt nas versoes mais atuais ja é suficiente para instalacao de pacoes e aplicativos, todos os comandos com apt-get
 
-teste
+# Filtro e busca de Arquivos e Diretórios
+
+comandos:
+	
+	## head
+
+		head <aquivo> retorna o topo do conteudo de um aquivo
+
+		head -n 1 <arquivo> retorna apenas a primeira linha do arquivo, numero altera a quantidade de linhas mostradas do topo.
+
+		head -n 1 <arquivo1> >> <arquivo2> cria um novo arquivo2 contendo apenas a primeira linha do conteudo do arquivo1
+
+	## tail
+
+		tail funciona da mesma maneira que o head.
+
+		tail -f <arquivo> retorna linhas do final do aquivo com atualização em tempo real. Muito utilizado para acompanhar logs
+
+	## grep
+
+		grep 'palavra_procurada' <arquivo> retorna em highlight todo os resultados a palavra procurada no trecho do conteudo do arquivo
+		 é possivel buscar por frases.
+		
+		grep -i 'palavra_procurada' <arquivo> ignora o case sensitive nos resultados
+
+		grep -c 'palavra_procurada' <arquivo> retorna o numero de resuldados da palavra no aquivos
+
+		grep 'palavra procura' -r retorna os resuldados da palavra em todas as pastas que estão no diretorio atual.
+
+	## find
+
+		find -name 'arquivo' busca pelo nome do arquivo de forma recusiva no diretorio atual
+
+		find -iname 'arquivo' ignora o case sensitive na busca
+
+		find -name 'documento*' busca todos os aquivos com inicio documento
+
+		find -empty retorna todos os diretorios vazios
+
+		find -type f retorna files
+
+		find -type d retorna directories
+
+		ex: find -name 'dir*' -type d vai // Vai retornar apenas todos os diretorios que iniciam com dir
+
+	## Locate
+
+		lacate não encontra aquivos novos, apenas arquivos mais antigos
+
+		lacate a.txt
+
+		locate -S mostra a base de dados que ele busca
+
+	## !! execulta o comando antrios novamente
+
+	ex: sudo !!
+
+	## which retorna de onde o comando digitado esta saindo, local onde a aplicação esta saindo.
+
+
+	# Editore de texto mais utilizados
+
+	## Nano
+		o editor nano ja vem com a instalação do ubunto
+
+		# Criando, salvando e saindo de aquivo
+
+			nano // abre um aquivo com o nano
+
+			ctrl + o // salva o arquivo
+
+			ctrl + x // fecha o arquivo
+
+			nano <nome_do_arquivo> // abre o arquivo criado
+
+		# Editando aquivos
+
+			ctrl + r // é possivel copiar conteudos  de outros arquivos no aquivo atual
+
+		# Copiar, colar e recortar
+
+			alt + a // o editor começa a selecionar tudo quando mever as setas
+
+			alt + 6 // coia a seleção
+
+			ctrl + u // cola a seleção
+
+			ctlr + k // recorta a seleção
+
+		# Movimentação dentro de um arquivo
+
+			alt + / //Movimenta o cursor para o final do arquivo
+
+			alt + \ //Movimenta para o inicio do arquivo
+
+			alt + g // abre o prompt para indicar o numero da linha que deseja movimentar
+
+		# Busca e replace
+
+			crtl + w // abre o prompt para buscar e movimentar para o primeiro resultado da expressão digitada
+
+						 o prompt de ctrl+w tem opçoes para movimentação rapida
+
+						# replace
+
+						no  prompt de ctrl + w,
+
+						alt  + r // solicita a expeção de deve ser substituida e por qual expressão que vai ser trocada
+
+
+	##Vim
+
+		instalação sudo apt-get install vim
+
+		O vim possui um modo de comandos, o interessante é buscar a lista de comando do vim para realizar ediçoes de texto nele
+
+		Alguns comandos
+
+		esc - volta par ao modo de comando
+
+		i - modo de insert, iserção de dados, texto
+
+		:x - salva e sai
+
+		:q - fecha o vim
+
+		:q! - força o fechamento
+
+		:w - salva as alterações sem fechar
+
+		dd - deleta uma linha intera
+
+		u - retorna a ação feita
+
+		ctrl + r - refaz as açoes desfeitass
+
+		/<palavra> - busca a palavra no documento, o primeiro resuldado, a tecla n movimenta para outro resultados e shift + n retorna nos resultados
+
+
+		:%s/palavra1/palavra2/g - Realiza o replace da palavra1 pela palavra2 em todo documento
+
+		:s/palavra1/palavra2/g - realizao replace da palavra em apenas na linha onde o cursor está
+
+
+
+# Gerenciamento de usuários e grupos
+
+	# Criando usúarios
+
+		sudo adduser <nome> - cria usuario no sistema e solicita algumas informações
+
+	# excluindo usuarios
+
+		sudo userdel --remove katiane - Exclui o usuário digitado
+
+	# Mudando nome de Display do usuário
+
+		sudo usermod -c 'ester' katiane
+
+	# Mudando o nome do diretorio base e do usuario no terminal
+
+		sudo usermod -l ester -d /home/ester -m katiane - muda o nome do diretótio do usuário
+
+	# Bloqueando e Desbloqueando usuários
+
+		sudo usermod -L ester  - bloqueia o usário
+
+	# Desbloqueando usuários
+
+		sudo usermod -U ester - desbloqueia  usuário
+
+
+# O que é um grupo no linux
+
+	Facilita em gerenciar permissões
+	Um usuário dicionado é também adicionado a algum grupo
+	contém vários usuários
+
+	# Vizualiza todos os grupos
+
+		getent group - visualiza todos os grupos ja criados no sistema
+
+	# Criando grupo
+
+		sudo groupadd -g 9999 devs - cria grupo com id 9999 e nome devs
+
+	# Deletando um grupo
+
+		sudo groupdel devs - deleta o grupo devs
+
+	# Movendo um usuário de grupos
+
+		sudo usermod -a -G teste ester - move ester para o grupo teste
+
+	# Remover o usuário de um grupo
+
+		sudo gpasswd -d ester flavio
+
+# Como virar SUDO - Super usuário
+
+	sudo su - o usuário vira um super usuário
+
+	exit - sai do super usuário
+
+# Trocar a senha do usuário
+
+	passwd - comando troca a senha do usuário
+
+
+# Gerenciamento de Permissções
+
+	
+	
+
+
+
+
+
+
+
+
+
+
