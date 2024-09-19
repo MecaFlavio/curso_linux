@@ -978,8 +978,174 @@ comandos:
 
 # Gerenciamento de Permissções
 
-	
-	
+	## Fundamentos de permissões
+
+		Possibilidade de alterar 3 propriedades de arquivos e diretórios
+
+		Leutura - r read
+		escrita - w write
+		execução - x executte
+		- não tem permissão
+
+	## Como funcionam as permissões 
+
+		1 222 333 444
+		
+		d rw- rw- r--
+		- r-- r-- r--
+
+		1 - diretório quando o promeiro algarismo é um - é um arquivo
+		222 - Permissões de owner
+		333 - Permissões do grupo (que o arquivo pertance)
+		444 - Permissões dos demais usuários (que não são dono e não estão neste grupo)
+
+	## Alterando permissões - Modo numérico
+
+		comando chmod xxx file/dir - onde o x representa as permissões em numero
+
+		0: sem permissão
+		1: excecutar --x
+		2: escrever -w-
+		3: ler e executar -wx
+		4: ler r--
+		5: ler e executar r-x
+		6: ler e escrever rw-
+		7: ler, escrever e executar rwx
+
+	## Alterando permissões - Modo simbólico
+
+		comando chmod args file/dir - onde args é representado por
+
+		u owner
+		g group
+		o outros
+		a all
+		+ adiciona
+		- remove
+		= substitui existentes
+
+		ex: chmod o = x teste.txt : outros recebe permissão de executar
+			chmod a = rwx teste.txt : todos recebem permissão de escrita, leitura e execução
+			chmod u + rw teste.txt : dono recebe permissão de leitura e escrita
+
+	## Alterando o proprietario e grupo do aquivo
+
+		comando sudo chown <nome_do_usuário> <nome_do_arquivo> - altera apenas o proprietario do arquivo
+
+		comando suo chown <nome_do_usuário>:<nome_do_grupo <nome_do_arquivo> - altra proprietário e o grupo
+
+	## Alterando o grupo apenas
+
+		omando sudo chgrp <nome_do_grupo> <nome_do_arquivo> - troca apenas o grupo do arquivo
+
+	# DICA
+	## Copiando do terminal
+
+		ctrl+shift+c
+
+	## Colando no teminal
+
+		ctrl+shift+v
+
+	## historico de ultimos comandos
+
+		comando history -mostra o historico de comando no terminal
+
+# Gerenciamento de Redes
+
+	## Como a web funciona
+
+		1- enviado uma requisição a um dominio dns
+		2- verificação do dominio dns = ip
+		3- requisição de resposta para o servidor que pertence o dominio
+		4- Retorno da reposta a quem solicitou
+
+	O que é DNS Domain Name System
+	Traduz o endereço de IP em um dominio
+	Não precisamos gravar números de IP, o que seria mais dificil
+
+	Funcionamento
+
+	1 Uma pessoa digita um dominio no navegador
+	2 um servidor lê o DNS (DNS RESOLVER)
+	3 Encontra o servidor pela combinação de DNS e IP
+	3 Retorna ao usuário o site desejado
+
+	## O que são portas
+
+		É um endpoint
+		Sempre esta associada a um IP
+
+		ex
+		20 FTP
+		22 SSH
+		80 HTTP
+		443 HTTPS
+
+	## O que é TCP
+
+		Transmission Control Protocol
+		Protocolo utilizado para transmissão de dados
+		Possui mais veriricações, tem mais segurança, garante integridade dos dados que transitam por ele.
+		É mais lento de UDP
+
+		ex:
+		SMTP (Envio de emails)
+		FTP (Tranferencias de aquivos)
+		HTTP(Protocolo para navegar na internet)
+
+	## O que é o UDP
+
+		USER Datagram Protocol
+		Também utilizados para transmissão de dados
+		Serve para enviar dados com foco na velocidade e não na confiabilidade
+		É utilizado principalmente para jogos online
+
+
+	## Comandp ping
+
+		ping volta estado da coneção do sistema com DNS e IPs
+
+	## Comando netstat
+
+		netstat -a - serve para ver quais coneçoes UDP e TCP estão conectadas
+
+		netstat -at - serve para ver conexões TCP
+
+		netstat -au - retorna coneções UDP
+
+	## Comando ifconfig
+
+		ifconfig  - serve para editar as configurações de ip do sistema
+
+
+	## nslookup - serve para saber os ip  atavém doDNS
+
+	## sudo tcpdamp - mostra um propmt com transmião TCP que esta sendo tranferido
+
+	## Como ver o  ip da maquina
+
+		hostname -I
+
+			
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
